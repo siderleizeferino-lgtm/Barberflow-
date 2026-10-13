@@ -1,0 +1,10 @@
+{
+  "name": "agenda-barbeiro-servidor",
+  "version": "1.0.0",
+  "description": "Servidor da agenda do barbeiro: contas, login e recuperação de senha por email",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}
