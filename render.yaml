@@ -1,0 +1,22 @@
+# Blueprint do Render: cria o serviço e o disco persistente automaticamente.
+# O envio de e-mail (RESEND_API_KEY e MAIL_FROM) é configurado depois, no painel do Render, em Environment.
+# Importante: o disco persistente só existe em planos PAGOS. Sem disco, as contas e a agenda são apagadas a cada reinício.
+services:
+  - type: web
+    name: agenda-barbeiro
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    disk:
+      name: dados
+      mountPath: /dados
+      sizeGB: 1
+    envVars:
+      - key: DB_FILE
+        value: /dados/db.json
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SHOP_TZ
+        value: America/Sao_Paulo
